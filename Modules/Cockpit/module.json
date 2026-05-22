@@ -1,0 +1,11 @@
+{
+    "name": "Cockpit",
+    "alias": "cockpit",
+    "description": "Core module: authentication, users, roles, permissions and preferences.",
+    "keywords": [],
+    "priority": 1,
+    "providers": [
+        "Modules\\Cockpit\\Providers\\CockpitServiceProvider"
+    ],
+    "files": []
+}

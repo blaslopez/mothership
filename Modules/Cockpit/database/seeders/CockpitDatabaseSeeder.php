@@ -1,0 +1,16 @@
+<?php
+
+namespace Modules\Cockpit\Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class CockpitDatabaseSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        // $this->call([]);
+    }
+}

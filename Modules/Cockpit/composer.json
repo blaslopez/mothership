@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/cockpit",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Cockpit\\": "app/",
+            "Modules\\Cockpit\\Database\\Factories\\": "database/factories/",
+            "Modules\\Cockpit\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Cockpit\\Tests\\": "tests/"
+        }
+    }
+}

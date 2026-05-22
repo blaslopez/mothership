@@ -2,21 +2,16 @@
 
 namespace App\Providers;
 
+use App\Services\MenuManager;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
-        //
+        $this->app->singleton('menu', fn() => new MenuManager());
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         //
