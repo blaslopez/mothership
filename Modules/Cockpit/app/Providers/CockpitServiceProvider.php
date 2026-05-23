@@ -10,10 +10,10 @@ class CockpitServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->loadMigrationsFrom(module_path('Cockpit', 'Database/migrations'));
-        $this->loadRoutesFrom(module_path('Cockpit', 'Routes/web.php'));
-        $this->loadViewsFrom(module_path('Cockpit', 'Resources/views'), 'cockpit');
-        $this->loadTranslationsFrom(module_path('Cockpit', 'Resources/lang'), 'cockpit');
+        $this->loadMigrationsFrom(module_path('Cockpit', 'database/migrations'));
+        $this->loadRoutesFrom(module_path('Cockpit', 'routes/web.php'));
+        $this->loadViewsFrom(module_path('Cockpit', 'resources/views'), 'cockpit');
+        $this->loadTranslationsFrom(module_path('Cockpit', 'resources/lang'), 'cockpit');
 
         // Register module permissions on boot
         $this->registerPermissions();
