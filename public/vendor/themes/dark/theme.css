@@ -1,0 +1,41 @@
+/* Dark theme */
+:root,
+[data-theme="dark"] {
+    --bs-body-bg:           #1a1d21;
+    --bs-body-color:        #e9ecef;
+    --bs-card-bg:           #2b2f33;
+    --bs-border-color:      #3d4247;
+    --bs-primary:           #4da3ff;
+    --bs-secondary:         #9ba3ab;
+    --app-sidebar-bg:       #212529;
+    --app-navbar-bg:        #161a1d;
+
+    color-scheme: dark;
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.card {
+    background-color: var(--bs-card-bg);
+    border-color: var(--bs-border-color);
+}
+
+.navbar { background-color: var(--app-navbar-bg) !important; }
+.sidebar { background-color: var(--app-sidebar-bg) !important; }
+
+.form-control, .form-select {
+    background-color: #2b2f33;
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #2b2f33;
+    color: var(--bs-body-color);
+}
+
+.bg-body-secondary { background-color: #141618 !important; }
+.bg-body-tertiary  { background-color: var(--app-sidebar-bg) !important; }

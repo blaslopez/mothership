@@ -1,0 +1,15 @@
+/* Light theme — default Bootstrap colors with minor adjustments */
+:root,
+[data-theme="light"] {
+    --bs-body-bg:           #f8f9fa;
+    --bs-body-color:        #212529;
+    --bs-card-bg:           #ffffff;
+    --bs-border-color:      #dee2e6;
+    --bs-primary:           #0d6efd;
+    --bs-secondary:         #6c757d;
+    --app-sidebar-bg:       #f1f3f5;
+    --app-navbar-bg:        #0d6efd;
+}
+
+body { background-color: var(--bs-body-bg); }
+.sidebar { background-color: var(--app-sidebar-bg) !important; }

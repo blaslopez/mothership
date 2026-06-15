@@ -3,8 +3,9 @@
 namespace Modules\Cockpit\Providers;
 
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Modules\Cockpit\Http\Middleware\LoadUserPreferences;
+use Modules\Cockpit\app\Services\PreferenceManager;
 
 class CockpitServiceProvider extends ServiceProvider
 {
@@ -15,24 +16,23 @@ class CockpitServiceProvider extends ServiceProvider
         $this->loadViewsFrom(module_path('Cockpit', 'resources/views'), 'cockpit');
         $this->loadTranslationsFrom(module_path('Cockpit', 'resources/lang'), 'cockpit');
 
-        // Register module permissions on boot
-        $this->registerPermissions();
-
-        // Register menu items
         $this->registerMenuItems();
+
+        // Share current preferences with all Cockpit views
+        View::composer('cockpit::layouts.master', function ($view) {
+            $prefs = app(PreferenceManager::class)->all('global');
+            $view->with([
+                'theme'  => $prefs['theme']  ?? 'light',
+                'layout' => $prefs['layout'] ?? 'default',
+            ]);
+        });
     }
 
     public function register(): void
     {
-        // Point Laravel auth to the Cockpit User model
         Config::set('auth.providers.users.model', \Modules\Cockpit\Models\User::class);
-    }
 
-    private function registerPermissions(): void
-    {
-        // Permissions are registered via seeder on first run.
-        // Modules define their permissions as an array for reference.
-        // See Database/seeders/PermissionSeeder.php
+        $this->app->singleton(PreferenceManager::class);
     }
 
     private function registerMenuItems(): void
@@ -43,14 +43,14 @@ class CockpitServiceProvider extends ServiceProvider
 
         $this->app->make('menu')->register('cockpit', [
             [
-                'label'      => 'cockpit::menu.users',
+                'label'      => 'cockpit::cockpit.menu.users',
                 'route'      => 'cockpit.users.index',
                 'icon'       => 'bi bi-people',
                 'permission' => 'cockpit.users.view',
                 'order'      => 100,
             ],
             [
-                'label'      => 'cockpit::menu.roles',
+                'label'      => 'cockpit::cockpit.menu.roles',
                 'route'      => 'cockpit.roles.index',
                 'icon'       => 'bi bi-shield',
                 'permission' => 'cockpit.roles.view',
